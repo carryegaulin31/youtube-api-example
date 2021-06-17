@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 
 
-const SearchBar = (props) => {
+const SearchBar = ({onTermSubmit}) => {
     const [term, setTerm] = useState('React Javascript')
-
+    // const onFormSubmit = props.onFormSubmit OR rather than props in the params deconstruct as {onFormSubmit}
+    // This event param is someone submitting the form
     const onSubmit = (event => {
         event.preventDefault()
 
-        onFormSubmit(term)
+        onTermSubmit(term)
     })
     return (
         <div className="search-bar ui segment">
