@@ -1,10 +1,11 @@
 import axios from "axios";
 import React from "react";
+import Youtube from './utils/youtube'
 
 import SearchBar from "./components/SearchBar";
 
 const onTermSubmit = async (term) => {
-  const response = await axios.get()
+  const response = await Youtube.get('/search')
 }
 
 const App = () => {
