@@ -1,9 +1,13 @@
-function App() {
+const App = () => {
   return (
-    <div className="App">
-    A very basic React app with none of the frills
+    <div className="ui container">
+    <SearchBar />
+      <div className="ui grid" >
+        <div className="ui row">
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
