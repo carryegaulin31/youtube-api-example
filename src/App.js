@@ -24,7 +24,7 @@ const App = () => {
       <div className="ui grid" >
         <div className="ui row">
         <div className="eleven wide column">
-        
+        {selectedVideo}
         </div>
         <div className="five wide column">
           <VideoList videos={videos} onVideoSelect={setSelectedVideo} />
