@@ -1,20 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Youtube from './utils/youtube'
-
+import VideoList from "./components/VideoList"
 import SearchBar from "./components/SearchBar";
-console.log(process.env.REACT_APP_YOUTUBE_API_KEY)
 
-const onTermSubmit = async (term) => {
-  const response = await Youtube.get('/search', {
-    params: {
-      q: term
-    }
-  })
 
-  console.log(response)
-}
 
 const App = () => {
+  const [videos, setVideos] = useState([])
+  
+  const onTermSubmit = async (term) => {
+    const response = await Youtube.get('/search', {
+      params: {
+        q: term
+      }
+    })
+  
+  setVideos(response.data.items)
+  }
+
   return (
     <div className="ui container">
     <SearchBar onTermSubmit={onTermSubmit} />
@@ -24,7 +27,7 @@ const App = () => {
         
         </div>
         <div className="five wide column">
-          <VideoList />
+          <VideoList videos={videos}/>
         </div>
         </div>
       </div>
