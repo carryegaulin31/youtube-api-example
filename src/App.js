@@ -20,6 +20,12 @@ const App = () => {
     <SearchBar onTermSubmit={onTermSubmit} />
       <div className="ui grid" >
         <div className="ui row">
+        <div className="eleven wide column">
+        
+        </div>
+        <div className="five wide column">
+          <VideoList />
+        </div>
         </div>
       </div>
     </div>
