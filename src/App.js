@@ -7,7 +7,7 @@ import SearchBar from "./components/SearchBar";
 
 const App = () => {
   const [videos, setVideos] = useState([])
-  
+  const [selectedVideo, setSelectedVideo] = useState(null)
   const onTermSubmit = async (term) => {
     const response = await Youtube.get('/search', {
       params: {
@@ -27,7 +27,7 @@ const App = () => {
         
         </div>
         <div className="five wide column">
-          <VideoList videos={videos}/>
+          <VideoList videos={videos} onVideoSelect={setSelectedVideo} />
         </div>
         </div>
       </div>
