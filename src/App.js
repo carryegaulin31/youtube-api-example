@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Youtube from './utils/youtube'
 import VideoList from "./components/VideoList"
 import SearchBar from "./components/SearchBar";
@@ -8,6 +8,11 @@ import SearchBar from "./components/SearchBar";
 const App = () => {
   const [videos, setVideos] = useState([])
   const [selectedVideo, setSelectedVideo] = useState(null)
+  
+  useEffect(() => {
+  onTermSubmit('React Javascript')
+  }, [])
+  
   const onTermSubmit = async (term) => {
     const response = await Youtube.get('/search', {
       params: {
@@ -16,6 +21,7 @@ const App = () => {
     })
   
   setVideos(response.data.items)
+  setSelectedVideo(response.data.items[0])
   }
 
   return (
@@ -24,7 +30,7 @@ const App = () => {
       <div className="ui grid" >
         <div className="ui row">
         <div className="eleven wide column">
-        {selectedVideo}
+          {selectedVideo.snippet.title}
         </div>
         <div className="five wide column">
           <VideoList videos={videos} onVideoSelect={setSelectedVideo} />
